@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  tz-service:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - './logs:/go/app/logs'
+      - './static:/go/app/static'
+
+volumes:
+  logs:
+    external: true
+  static:
+    external: true
